@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>BookCase</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/home.css')}}">
+</head>
+<body>
+	<div class="page">
+		<div class="nav">
+			<div class="title">
+			<p>BookCase</p>
+			</div>
+			<div class="search">
+				<form action="{{url_for('search')}}">
+				<input type="search" name="search" placeholder="Search">
+				<button id="search_button" type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+			<div class="notification">
+				
+			</div>
+			<div class="menu_bar">
+				<a href="{{ url_for('my_books') }}">
+					<button class="button_home" type="submit"><b>My Profile</b></button>
+				</a>
+			</div>
+			<div class="menu_bar">
+				<form action="{{url_for('sell')}}">
+					<button class="button_home" type="submit"><b>Sell</b></button>
+				</form>
+			</div>
+			<div class="menu_bar">
+				<form action="{{url_for('logout')}}">
+					<button class="button_home" type="submit"><b>Log Out</b></button>
+				</form>
+			</div>
+		</div>
+		<div class="section">
+			{% if cases|length >= 1 %}
+				{% for case in cases%}
+					<div class="flex_container">
+						<div class="flex">
+							<a href="{{url_for('view',show_book=case.image)}}"><img class="image_box" alt="{{case.image}}" src="{{ url_for('static', filename ='images') }}/{{case.image}}" width="140px" height="150px"></a>
+							<h4 style="padding-left:20px">Price:{{case.price}}<br>
+									{{case.description}}</h4>
+						</div>
+				{% endfor %}
+			{% else %}
+				<h3>No Books yet..!!</h3>
+			{% endif %}
+					</div>
+				</div>
+		</div>
+		<div class="footer">
+		</div>	
+	</div>
+
+</body>
+</html>

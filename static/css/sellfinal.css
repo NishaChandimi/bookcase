@@ -1,0 +1,32 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+.title{
+	width:100%;
+	height:50px;
+	background-color:black;
+	color:white;
+}
+h1{
+	padding-left:40%;
+	padding-top:7px;
+}
+h2{
+	padding-top:200px;
+	padding-left:470px;
+}
+.button_home{
+	width:20%;
+	height:40px;
+	margin-top:10px;
+	margin-left:500px;
+	background-color:black;
+	color:white;
+	border:1px solid black;
+}
+.button_home:hover{
+	color:black;
+	background-color:white;
+}
+.section{

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BookCase</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/profile.css')}}">
+</head>
+<body>
+	<div class="page">
+		<div class="main_bar">
+			<div class="title">
+				<h1>BookCase</h1>
+			</div>
+			<div class="back_home">
+				<form action="{{url_for('back_to_home')}}">
+					<button class="button_home" type="submit"><b>Home</b></button>
+				</form>
+			</div>
+		</div>
+	 	<div class="section">
+	 		{% if searches|length >= 1 %}
+				{% for search in searches%}
+					<div class="flex_container">
+						<div class="flex">
+							<a href="#"><img class="image_box" alt="{{search.image}}" src="{{ url_for('static', filename ='images') }}/{{search.image}}" width="140px" height="150px"></a>
+							<h4 style="padding-left:20px">Price:{{search.price}}<br>
+									{{search.description}}</h4>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<h3 style="padding-top:250px">No Books found..!!</h3>
+			{% endif %}
+		</div>
+	</div>
+</body>
+</html>

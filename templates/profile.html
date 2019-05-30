@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BookCase</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/profile.css')}}">
+</head>
+<body>
+	<div class="page">
+		<div class="main_bar">
+			<div class="title">
+				<h1>BookCase</h1>
+			</div>
+			<div class="back_home">
+				<form action="{{url_for('back_to_home')}}">
+					<button class="button_home" type="submit"><b>Home</b></button>
+				</form>
+			</div>
+		</div>
+		<div class="box">
+			<div class="heading" >
+				<h2>My Books</h2>
+			</div>
+			{% if books|length >= 1 %}
+				{% for book in books %}
+						<div class="image">
+							<img src="{{ url_for('static', filename ='images') }}/{{book.image}}" width="150px" height="140px">
+						</div>
+						<div class="details">
+							<p><b>Book name :</b>{{book.book_name}}
+							<br>
+							<b>Price :</b>{{book.price}}
+							<br>
+							<b>Description :</b>{{book.description}}
+							</p>
+							<form action="{{url_for('view',show_book=book.image)}}">
+								<button class="button" type="submit">View</button>
+							</form>
+				 		</div>
+			 	{% endfor %}
+			{% else %}
+				<h3>No Books yet..!!</h3>
+			{% endif %}
+		 	
+		</div>
+				<div class="box">
+			<div class="heading">
+				<h2>My Orders</h2>
+			</div>
+				{% if orders|length >= 1 %}
+				{% for order in orders %}
+						<div class="image">
+							<img src="{{ url_for('static', filename ='images') }}/{{order.image}}" width="150px" height="140px">
+						</div>
+						<div class="details">
+							<p><b>Book name :</b>{{order.order_book}}
+							<br>
+							<b>Price :</b>{{order.price}}
+							<br>
+							<b>Description :</b>{{order.description}}
+							</p>
+							<form action="{{url_for('view',show_book=order.image)}}">
+								<button class="button" type="submit">View</button>
+							</form>
+				 		</div>
+			 	{% endfor %}
+			{% else %}
+				<h3>No Orders yet..!!</h3>
+			{% endif %}
+		</div>
+				<div class="box">
+			<div class="heading">
+				<h2>Favourite Books</h2>
+			</div>
+			{% if loves|length >= 1 %}
+				{% for love in loves %}
+						<div class="image">
+							<img src="{{ url_for('static', filename ='images') }}/{{love.image}}" width="150px" height="140px">
+						</div>
+						<div class="details">
+							<p><b>Book name :</b>{{love.love_book}}
+							<br>
+							<b>Price :</b>{{love.price}}
+							<br>
+							<b>Description :</b>{{love.description}}
+							</p>
+							<form action="{{url_for('view',show_book=love.image)}}">
+								<button class="button" type="submit">View</button>
+							</form>
+				 		</div>
+			 	{% endfor %}
+			{% else %}
+				<h3>No books in your case yet..!!</h3>
+			{% endif %}
+		</div>
+		<div>
+	</div>
+</body>
+</html>

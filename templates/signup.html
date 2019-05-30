@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+	<link rel="stylesheet" href="{{url_for('static',filename='css/signup.css')}}">
+</head>
+
+<body>
+<div class="login">
+	<h1>BookCase</h1>
+	<div class="Signup-form">
+		<h3>Signup</h3>
+		<form action="{{url_for('signup')}}" method="post">
+			<h6 style="color:black;">
+				{% with messages = get_flashed_messages() %}
+				   {% if messages %}
+				      {% for message in messages %}
+				         <h6>{{ message }}</h6> 
+				      {% endfor %}
+				   {% endif %}
+				{% endwith %}
+			</h6>
+		<label>Username</label>
+			<input type="text" name="username" placeholder="Username" autofocus required >
+			<br>
+			<label>Email ID</label>
+			<input type="email" name="email"placeholder="Email" autofocus required>
+			<label>Password</label>
+			<input type="password" name="password" placeholder="Password" autofocus required >
+			<br>
+			<label>Confirm</label>
+			<input type="password" name="c_password" placeholder="Password" autofocus required>
+			<button id="signup" type="submit">Signup</button>
+
+		</form>
+	</div>
+</div>
+	
+</body>
+</html>

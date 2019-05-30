@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BookCase</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/book_view.css')}}">
+</head>
+<body>
+	<div class="title">
+		<h1>BookCase</h1>
+	</div>
+	<div class="section">
+		{% if name|string() == views.owner_name|string() %}
+			<div class="details">
+				<h2>Details</h2>
+				<h3>Seller name</h3>
+				<br>
+				<p>{{views.owner_name}}</p>
+				<h3>Book Name</h3>
+				<br>
+				<p>{{views.book_name}}</p>
+				<h3>Author name</h3>
+				<br>
+				<p>{{views.writer_name}}</p>
+				<h3>Description</h3>
+				<br>
+				<p>{{views.description}}</p>
+				<h3>Price</h3>
+				<br>
+				<p>{{views.price}}</p>
+			</div>
+			<div class="image">
+				<img src="{{ url_for('static', filename ='images') }}/{{views.image}}" height="300px" width="250px">
+			</div>
+			<div class="choice">
+				<form action="#">
+					<button disabled=disable class="button"><b>Buy Now</b></button>
+				</form>
+				<form action="{{url_for('love',book=views.book_name)}}">
+					<button class="button"><b>Add to Favourites</b></button>
+				</form>
+			</div>
+		{% elif  name|string() == order.profile_name|string() %}
+			<div class="details">
+				<h2>Details</h2>
+				<h3>Seller name</h3>
+				<br>
+				<p>{{order.seller_name}}</p>
+				<h3>Book Name</h3>
+				<br>
+				<p>{{order.order_book}}</p>
+				<h3>Author name</h3>
+				<br>
+				<p>{{order.writer_name}}</p>
+				<h3>Description</h3>
+				<br>
+				<p>{{order.description}}</p>
+				<h3>Price</h3>
+				<br>
+				<p>{{order.price}}</p>
+			</div>
+			<div class="image">
+				<img src="{{ url_for('static', filename ='images') }}/{{order.image}}" height="300px" width="250px">
+			</div>
+			<div class="choice">
+				<form action="#">
+					<button disabled=disable class="button"><b>Buy Now</b></button>
+				</form>
+				<form action="{{url_for('love',book=order.order_book)}}">
+						<button class="button"><b>Add to Favourites</b></button>
+				</form>
+			</div>
+		{% else %}
+			<div class="details">
+				<h2>Details</h2>
+				<h3>Seller name</h3>
+				<br>
+				<p>{{views.owner_name}}</p>
+				<h3>Book Name</h3>
+				<br>
+				<p>{{views.book_name}}</p>
+				<h3>Author name</h3>
+				<br>
+				<p>{{views.writer_name}}</p>
+				<h3>Description</h3>
+				<br>
+				<p>{{views.description}}</p>
+				<h3>Price</h3>
+				<br>
+				<p>{{views.price}}</p>
+			</div>
+			<div class="image">
+				<img src="{{ url_for('static', filename ='images') }}/{{views.image}}" height="300px" width="250px">
+			</div>
+			<div class="choice">
+				<form action="{{url_for('buy',book_name=views.book_name,owner_name=views.owner_name,book_writer_name=views.writer_name,book_price=views.price,book_description=views.description,book_image=views.image)}}">
+					<button class="button"><b>Buy Now</b></button>
+				</form>
+				<form action="{{url_for('love',book=views.book_name)}}">
+					<button class="button"><b>Add to Favourites</b></button>
+				</form>
+			</div>
+		{% endif %}
+	</div>
+</body>
+</html>

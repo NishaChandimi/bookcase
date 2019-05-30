@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BookCase</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/sell.css')}}">
+</head>
+<body>
+	<div class="page">
+		<div class="main_bar">
+			<div class="title">
+				<h1>BookCase</h1>
+			</div>
+			<div class="back_home">
+				<form action="{{url_for('back_to_home')}}">
+					<button class="button_home" type="submit"><b>Home</b></button>
+				</form>
+			</div>
+		</div>
+		<div class="upload_img">
+			<div class="heading">
+				<h2>Upload Photos</h2>
+			</div>
+			<div class="photos">
+				<form action="{{url_for('cased')}}" method="post" enctype=multipart/form-data>
+					<input type="file" placeholder="upload images" name="image">
+			</div>
+		<div class="info">
+				<label><b>Book Name</b></label><br>
+				<input type="text" name="book_name"><br>
+				<label><b>Writer Name</b></label><br>
+				<input type="text" name="writer_name"><br>
+				<label><b>Address</b></label><br>
+				<input type="text" name="address"><br>
+				<label><b>Price</b></label><br>
+				<input type="number" name="price"><br>
+				<label><b>Mobile no.</b></label><br>
+				<input type="number"  name="mobile"><br>
+				<label><b>Add a description</b></label><br>
+				<input type="text" name="description"><br>
+				<button class="button"><b>Put book into Case</b></button>
+			</form>
+			
+		</div>
+		</div>
+	</div>
+</body>
+</html>
